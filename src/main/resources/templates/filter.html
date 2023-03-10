@@ -1,0 +1,52 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Profile Details</title>
+</head>
+<body>
+
+<form action="#" th:action="@{/filteredpost}" th:object="${filter}" method="get">
+    <p>Price: <input type="text" required="required" th:field="*{price}" /></p>
+    
+    
+  <select th:field="*{foodpreference}">
+    <option th:value="vegan" th:text="Veg"></option>
+    <option th:value="nonveg" th:text="NonVeg"></option>
+</select>
+
+  <select th:field="*{roomtype}">
+    <option th:value="1bhk" th:text="1bhk"></option>
+    <option th:value="2bhk" th:text="2bhk"></option>
+    <option th:value="3bhk" th:text="3bhk"></option>
+</select>
+
+
+    
+
+
+    <p><input type="submit" value="Submit" /> </p>
+
+
+</form>
+
+</body>
+</html>
+
+
+

@@ -1,0 +1,22 @@
+
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Signup</title>
+</head>
+<body>
+
+<form action="#" th:action="@{/saveprofile}" th:object="${createprofile}" method="post">
+	<p>New Name: <input type="text" required="required" th:field="*{name}" /></p>
+    <p>Food Preference: <input type="text" required="required" th:field="*{foodPreference}" /></p>
+    <p>Address: <input type="text" required="required" th:field="*{address}" /></p>
+    <p>RoomType: <input type="text" required="required" th:field="*{roomType}" /></p>
+    <p>Gender: <input type="text" required="required" th:field="*{gender}" /></p>
+    <p>budget: <input type="text" required="required" th:field="*{budget}" /></p>
+  <p><input type="submit" value="Submit" /> </p>
+</form>
+
+</body>
+</html>

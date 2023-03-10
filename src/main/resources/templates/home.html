@@ -1,0 +1,80 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+
+    <style>body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .topnav {
+    overflow: hidden;
+    background-color: #16059c;
+    }
+
+    .topnav a {
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+    }
+
+    .topnav a:hover {
+    background-color: #f7f8fa;
+    color: black;
+    }
+
+    .topnav a.active {
+    background-color: #5a6d99;
+    color: white;
+    }
+    .topnav-right {
+    float: right;
+    }</style>
+
+
+    <main>
+        <div class="topnav">
+
+
+            <div class="topnav-right">
+                <a href="/displayprofile">My Profile</a>
+            </div>
+        </div>
+
+        <header>
+            <h1>Posts</h1>
+        </header>
+    
+    	<form id="login_form" class="form_class" th:action="@{/allpost}" th:object="${postlist}" method="post">
+       <table>
+    <tr>
+        <th>emailID</th>
+        <th>price</th>
+        <th>roomtype</th>
+        <th>View Complete Post</th>
+    </tr>
+    	<tr th:if="${postlist.empty}">
+            <td colspan="2"> No posts avaialable </td>
+        </tr>
+    <tr th:each="post : ${postlist}">
+        <td class="align-middle" th:text="${post.emailId}"></td>
+        <td class="align-middle" th:text="${post.price}"></td>
+        <td class="align-middle" th:text="${post.roomtype}"></td>
+        <td><a th:href="@{'/allposts/' + ${post.postid}}">View More</a></td>
+    </tr>
+</table>
+    	</form>
+    	
+   	<a th:href="@{/filterpost}">
+    <button>Filter</button></a>
+    
+     <a th:href="@{/roommate}">
+    <button>Suggestions</button></a>
+    </main>
+    </main>
+
+</body>
+</html>
+

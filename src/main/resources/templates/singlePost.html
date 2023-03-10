@@ -1,0 +1,25 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+    <header>
+        <h1>Details : </h1>
+    </header>
+ <main>
+    <table>
+       
+	     <tr th:each="p : ${post}">
+	     	    <p th:text="'Post Id : '+ ${p.postid}"></p>
+		        <p th:text="'Email Id :'+${p.emailId}"></p>
+		        <p th:text="'Title: '+${p.title}"></p>
+		        <p th:text="'Price: '+${p.price}"></p>
+		        <p th:text="'Room type: '+${p.roomtype}"></p>
+		        <p th:text="'Food preference: '+${p.foodpreference}"></p> 
+		        
+		        <a th:href="@{'/comments/' + ${p.postid}}">View Comments</a>      
+		 </tr>
+    </table>
+     
+        
+  </main>
+
+</body>
+</html>

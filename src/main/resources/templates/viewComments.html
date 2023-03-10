@@ -1,0 +1,17 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+    <header>
+        <h4>Comment section </h4>
+    </header>
+    <main>
+    
+      <table>
+	    <tr th:each="comment : ${commentlist}">
+	        <p th:text="'Comment : '+ ${comment.content} + '  By : '+ ${comment.email_id}"></p>	               
+	    </tr>
+        
+	</table>
+    </main>
+
+</body>
+</html>

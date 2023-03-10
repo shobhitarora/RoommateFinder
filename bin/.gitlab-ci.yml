@@ -1,0 +1,59 @@
+#image: maven:
+
+stages:
+  - build
+  - test
+  - deploy
+  - deploy-develop
+
+build:
+  image: maven:3-jdk-8
+  stage: build
+  tags:
+    - dalfcs_gitlab_docker_ci
+  script:
+    - mvn $MAVEN_CLI_OPTS compile
+    #- ls
+  artifacts:
+    paths:
+      - target/*.jar
+  only:
+     refs:
+        - develop
+  #     - test
+test:
+  image: maven:3-jdk-8
+  stage: test
+  tags:
+    - dalfcs_gitlab_docker_ci
+  script:
+    - mvn clean test
+  artifacts:
+    when: always
+  #reports:
+    #junit:
+       #- target/surefire-reports/TEST-*.xml
+       #- target/failsafe-reports/TEST-*.xml
+  only:
+    refs:
+       - develop
+  #    - test
+
+deploy-develop:
+    image: ruby:latest
+    stage: deploy
+    tags:
+      - dalfcs_gitlab_docker_ci
+#   before_script:
+#     - 'command -v ssh-agent >/dev/null || ( apt-get update -y && apt-get install openssh-client -y )'
+#      - eval $(ssh-agent -s)
+#     - echo "$DEPLOY_SSH_KEY" | tr -d '\r' | ssh-add -
+    script:
+      - apt-get update -qy
+      - apt-get install -y ruby-dev
+      - gem install dpl
+      - dpl --provider=heroku --app=find-roommate-devenv --api-key=9ce63bd9-b0f3-41bb-a2fc-5d8c25b10be0
+#   #TODO: Add Production App Environment Variables
+    only:
+     - develop
+

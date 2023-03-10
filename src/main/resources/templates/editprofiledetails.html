@@ -1,0 +1,28 @@
+
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Profile Details</title>
+</head>
+<body>
+
+<form action="#" th:action="@{/editdetails}" th:object="${profile}" method="post">
+    <p>Food Preference: <input type="text" required="required" th:field="*{foodPreference}" /></p>
+    <p>New Name: <input type="text" required="required" th:field="*{name}" /></p>
+    <p>Address: <input type="text" required="required" th:field="*{address}" /></p>
+    <p>RoomType: <input type="text" required="required" th:field="*{roomType}" /></p>
+    <p>Gender: <input type="text" required="required" th:field="*{gender}" /></p>
+
+
+    <p><input type="submit" value="Submit" /> </p>
+
+
+</form>
+<a th:href="@{/displayprofile}">
+    <button>Go Back</button></a>
+
+</body>
+</html>
+
